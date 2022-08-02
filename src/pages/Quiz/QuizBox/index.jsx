@@ -39,7 +39,6 @@ export function QuizBox(props){
         : {...answer, isHeld: false}
       })
     )
-
   }
 
 
