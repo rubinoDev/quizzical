@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const QuizAnswerContainer = styled.div`
-  display: flex;
-  gap:1.6rem;
-  flex-direction: row;
+  
   width: 100%;
 
   .answer-btn{
@@ -31,5 +29,15 @@ export const QuizAnswerContainer = styled.div`
     &.held{
       background: #D6DBF5;
     }
+
+  }
+
+  ul{
+    display: flex;
+  gap:1.6rem;
+  flex-direction: row;
+  }
+  .answer-item{
+    list-style: none;
   }
 `

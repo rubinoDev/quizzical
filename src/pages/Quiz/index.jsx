@@ -20,6 +20,9 @@ import { QuizContainer } from "./styles";
       return
     }
 
+    function handleCheckAnswer(){
+      console.log('ta pegando')
+    }
 
   return(
     <QuizContainer>
@@ -31,7 +34,14 @@ import { QuizContainer } from "./styles";
         />
       )
       )}
-       <button className="check-btn">Check answers</button>
+    <button 
+    className="check-btn" 
+    onClick={handleCheckAnswer}
+
+    >
+    Check answers
+    </button>
+
     </QuizContainer>
   )
 }

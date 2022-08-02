@@ -2,18 +2,14 @@ import { useState } from "react";
 import { QuizAnswerContainer } from "./styles";
 
 export function QuizAnswer(props){
-
-  const [isHeld,setIsHeld] = useState(false)
-
-  function handleClick(){
-    setIsHeld(prevState => !prevState)
-  }
-
+  
   return(
-      <button className={isHeld ? "answer-btn held" : "answer-btn"}
-      onClick={handleClick}
+    <li className="answer-item">
+      <button className={props.isHeld ? "answer-btn held" : "answer-btn"}
+      onClick={()=>props.handleHold(props.id)}
       >
         {props.answer}
       </button>
+    </li>
   )
 }
