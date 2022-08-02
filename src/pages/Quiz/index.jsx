@@ -4,8 +4,9 @@ import { QuizContainer } from "./styles";
 
  export function Quiz(){
 
-  const [allQuizzes, setAllQuizzes] = useState([])
+  const [allQuizzes, setAllQuizzes] = useState([]);
   const [isDataLoaded, setIsDataLoaded] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false)
 
     useEffect(() => {
       (async () => {
@@ -16,14 +17,17 @@ import { QuizContainer } from "./styles";
       })();
     }, []);
 
+    console.log(allQuizzes)
+
     if (isDataLoaded === null) {
       return
     }
 
     function handleCheckAnswer(){
-      console.log('ta pegando')
+      setShowAnswer(prevState => !prevState)
     }
 
+    console.log(showAnswer)
   return(
     <QuizContainer>
       {allQuizzes.map(quiz=>(
@@ -31,6 +35,7 @@ import { QuizContainer } from "./styles";
           key={quiz.id}
           quizProps = {quiz}
           allWrongAnswers={quiz.incorrectAnswers}
+          showAnswer = {showAnswer}
         />
       )
       )}

@@ -28,6 +28,14 @@ export const QuizAnswerContainer = styled.div`
 
     &.held{
       background: #D6DBF5;
+
+      &.right{
+        background-color: green;
+      }
+
+      &.wrong{
+        background-color: red;
+      }
     }
 
   }
