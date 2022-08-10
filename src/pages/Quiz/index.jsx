@@ -27,7 +27,6 @@ import { QuizContainer } from "./styles";
       setShowAnswer(prevState => !prevState)
     }
 
-    console.log(showAnswer)
   return(
     <QuizContainer>
       {allQuizzes.map(quiz=>(

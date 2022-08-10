@@ -30,11 +30,13 @@ export const QuizAnswerContainer = styled.div`
       background: #D6DBF5;
 
       &.right{
-        background-color: green;
+        background-color: hsla(133, 46%, 71%, 1);
+        border: none;
       }
 
       &.wrong{
-        background-color: red;
+        background-color: #F8BCBC;
+        border: none;
       }
     }
 

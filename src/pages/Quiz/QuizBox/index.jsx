@@ -7,7 +7,6 @@ import { QuizAnswerContainer } from "../QuizAnswer/styles";
 export function QuizBox(props){
 
   const [quizAnswer,setQuizAnswer] = useState([])
-  const [buttonClassName,setButtonClassName] = useState('')
   const allAnswers = []
 
   for(let i = 0; i < props.allWrongAnswers.length; i++){
@@ -41,19 +40,6 @@ export function QuizBox(props){
     )
   }
 
-
-    if(props.showAnswer){ 
-      var buttonClassNameVar = ''
-      quizAnswer.map(answer=>(
-        buttonClassNameVar = answer.isHeld && answer.answer === props.quizProps.correctAnswer ? 'right' : 'wrong'
-      ))
-    }
-
-    useEffect(()=>{
-      setButtonClassName(buttonClassNameVar)
-    },[props.showAnswer])
-
-    console.log(buttonClassName)
   return(
 
     <QuizBoxContainer>
@@ -68,7 +54,9 @@ export function QuizBox(props){
               answer = {qAnswer.answer}
               isHeld = {qAnswer.isHeld}
               handleHold = {handleHold}
-              buttonClassName = {buttonClassName}
+              answerIndex={quizAnswer.indexOf(qAnswer, 0)}
+              showAnswer = {props.showAnswer}
+              correctAnswer = {props.quizProps.correctAnswer}
             
             />
           )
