@@ -23,7 +23,8 @@ export const QuizAnswerContainer = styled.div`
     cursor: pointer;
 
     &:hover{
-      background-color: #D8E8EE;;
+      background-color: #D8E8EE;
+
     }
 
     &.held{
@@ -37,9 +38,9 @@ export const QuizAnswerContainer = styled.div`
       &.wrong{
         background-color: #F8BCBC;
         border: none;
+        color: rgba(41, 50, 100, 0.54);
       }
     }
-
   }
 
   ul{

@@ -6,6 +6,7 @@ import { QuizAnswerContainer } from "../QuizAnswer/styles";
 
 export function QuizBox(props){
 
+
   const [quizAnswer,setQuizAnswer] = useState([])
   const allAnswers = []
 
@@ -17,16 +18,16 @@ export function QuizBox(props){
   allAnswers.splice(randomIndex, 0, props.quizProps.correctAnswer)
   
   useEffect(()=>{
-    const quizObjList = []
+    const quizProps = []
     allAnswers.map(answer=>{
-      quizObjList.push({
+      quizProps.push({
         id : nanoId(),
         answer : answer,
         isHeld : false
       })
     })
 
-    setQuizAnswer(quizObjList)
+    setQuizAnswer(quizProps)
   },[])
 
   function handleHold(id){
@@ -39,6 +40,20 @@ export function QuizBox(props){
       })
     )
   }
+
+  useEffect(() => {
+    let isAnyAnswerHolded;
+    quizAnswer.find(answer=>{
+      return(
+        answer.isHeld ? isAnyAnswerHolded = true : isAnyAnswerHolded = false
+      )
+    })
+
+    props.arrIsAllAnswersHolded[props.quizBoxIndex] = isAnyAnswerHolded
+    const test = props.arrIsAllAnswersHolded.every(answer => answer === true)
+    props.setIsAllAnswersHolded(test)
+
+  },[handleHold])
 
   return(
 
@@ -57,7 +72,7 @@ export function QuizBox(props){
               answerIndex={quizAnswer.indexOf(qAnswer, 0)}
               showAnswer = {props.showAnswer}
               correctAnswer = {props.quizProps.correctAnswer}
-            
+
             />
           )
         })}

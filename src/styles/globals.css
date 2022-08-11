@@ -3,7 +3,8 @@ html {
   font-size: 62.5%;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
-
+  overscroll-behavior-x: unset;
+  overflow-x:hidden;
 }
 
 *, *:before, *:after {

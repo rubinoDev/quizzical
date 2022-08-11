@@ -2,14 +2,6 @@ import { useEffect, useState } from "react";
 import { QuizAnswerContainer } from "./styles";
 
 export function QuizAnswer(props){
-  console.log(props)
-  console.log(props.buttonClassName)
-
-  // const [test, setTest] = useState('');
-
-  // useEffect(() => {
-  //   setTest(props.buttonClassName)
-  // },[props.buttonClassName])
 
   let buttonClassNameTest = 'answer-btn' ;
 
