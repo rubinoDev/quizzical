@@ -1,29 +1,29 @@
-import { memo, useEffect, useState } from "react";
-import { QuizAnswerContainer } from "./styles";
+import { memo, useCallback, useMemo } from "react";
 
-function QuizAnswer(props){
-
-  let buttonClassNameTest = 'answer-btn' ;
+export default function QuizAnswer(props){
+  let buttonClassName = 'answer-btn' ;
 
   if(props.isHeld){
-    buttonClassNameTest = 'answer-btn held'
+    buttonClassName = 'answer-btn held'
   }
 
   if(props.showAnswer && props.answer === props.correctAnswer){
-    buttonClassNameTest = 'answer-btn held right'
+    buttonClassName = 'answer-btn held right'
   }
 
   if(props.showAnswer && props.isHeld && props.answer === props.correctAnswer){
-    buttonClassNameTest = 'answer-btn held right'
+    buttonClassName = 'answer-btn held right'
+    props.arrScore.push('right answer');
+    // console.log(props.arrScore)
   }
 
   if(props.showAnswer && props.isHeld && props.answer !== props.correctAnswer){
-    buttonClassNameTest = 'answer-btn held wrong'
+    buttonClassName = 'answer-btn held wrong'
   }
 
   return(
     <li className="answer-item">
-      <button className={buttonClassNameTest} 
+      <button className={buttonClassName} 
       onClick={()=>props.handleHold(props.id)}
       >
         {props.answer}
@@ -31,5 +31,3 @@ function QuizAnswer(props){
     </li>
   )
 }
-
-export default memo(QuizAnswer);

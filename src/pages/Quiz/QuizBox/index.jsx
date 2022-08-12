@@ -4,7 +4,7 @@ import { QuizBoxContainer } from "./styles";
 import nanoId from "nano-id";
 import { QuizAnswerContainer } from "../QuizAnswer/styles";
 
-function QuizBox(props){
+export default function QuizBox(props){
 
   const [quizAnswer,setQuizAnswer] = useState([])
   const allAnswers = []
@@ -49,8 +49,8 @@ function QuizBox(props){
     })
 
     props.arrIsAllAnswersHolded[props.quizBoxIndex] = isAnyAnswerHolded
-    const test = props.arrIsAllAnswersHolded.every(answer => answer === true)
-    props.setIsAllAnswersHolded(test)
+    const isEveryAnswersHeld = props.arrIsAllAnswersHolded.every(answer => answer === true)
+    props.setIsAllAnswersHolded(isEveryAnswersHeld)
 
   },[handleHold])
 
@@ -71,7 +71,7 @@ function QuizBox(props){
               answerIndex={quizAnswer.indexOf(qAnswer, 0)}
               showAnswer = {props.showAnswer}
               correctAnswer = {props.quizProps.correctAnswer}
-
+              arrScore= {props.arrScore}
             />
           )
         })}
@@ -83,4 +83,3 @@ function QuizBox(props){
   )
 }
 
-export default memo(QuizBox);
