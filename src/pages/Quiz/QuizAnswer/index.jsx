@@ -19,7 +19,7 @@ export default function QuizAnswer(props){
   if(props.showAnswer && props.isHeld && props.answer === props.correctAnswer){
     buttonClassName = 'answer-btn held right'
     props.arrScore.push('right answer');
-    // props.handleSetScore()
+
   }
 
 
@@ -32,6 +32,7 @@ export default function QuizAnswer(props){
     <li className="answer-item">
       <button className={buttonClassName} 
       onClick={()=>props.handleHold(props.id)}
+      disabled = {props.showAnswer}
       >
         {props.answer}
       </button>
