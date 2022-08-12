@@ -1,6 +1,10 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo } from "react";
 
 export default function QuizAnswer(props){
+  // const handleSetScore = useCallback(() => { 
+  //   props.setScore(props.arrScore)
+  // }, [])
+
   let buttonClassName = 'answer-btn' ;
 
   if(props.isHeld){
@@ -11,11 +15,14 @@ export default function QuizAnswer(props){
     buttonClassName = 'answer-btn held right'
   }
 
+
   if(props.showAnswer && props.isHeld && props.answer === props.correctAnswer){
     buttonClassName = 'answer-btn held right'
     props.arrScore.push('right answer');
-    // console.log(props.arrScore)
+    // props.handleSetScore()
   }
+
+
 
   if(props.showAnswer && props.isHeld && props.answer !== props.correctAnswer){
     buttonClassName = 'answer-btn held wrong'

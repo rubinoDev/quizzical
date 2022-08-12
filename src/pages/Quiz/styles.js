@@ -7,7 +7,7 @@ export const QuizContainer = styled.div`
     css`
       opacity: 1;
     `}
-  transition: opacity ease-in-out 500ms;
+  transition: opacity ease-in-out 200ms;
 
   display: flex;
   flex-direction: column;

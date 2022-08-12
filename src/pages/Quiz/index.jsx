@@ -9,20 +9,30 @@ import { QuizContainer } from "./styles";
   const [showAnswer, setShowAnswer] = useState(false)
   const [isAllAnswersHolded, setIsAllAnswersHolded] = useState(false);
   const [isTimeToShowQuizBox, setIsTimeToShowQuizBox] = useState(false);
-  const [score,setScore] = useState();
+  const [score,setScore] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
+
   const arrIsAllAnswersHolded = new Array(allQuizzes.length);
 
-
-  const arrScore = [];
+  let arrScore = [];
   console.log('render')
-  console.log(arrScore)
+  console.log(score)
+
+  function addScore(){
+    setScore(prevState => prevState + 1)
+  }
+
+  const handleSetScore = useCallback(() => {
+    return addScore()
+  }, [])
+
   function toggleIsTimeToShowQuizBox(){
-    setIsTimeToShowQuizBox(prevState => !prevState)
+    setIsTimeToShowQuizBox(true)
   }
 
   useEffect(() => {
     setTimeout(toggleIsTimeToShowQuizBox, 500);
-  },[] )
+  },[allQuizzes] )
 
   useEffect(() => {
     (async () => {
@@ -31,7 +41,7 @@ import { QuizContainer } from "./styles";
       setAllQuizzes(response)
       setIsApiDataLoaded(response);
     })();
-  }, []);
+  }, [isGameOver]);
 
   if (isApiDataLoaded === null) {
     return
@@ -40,12 +50,19 @@ import { QuizContainer } from "./styles";
   function handleCheckAnswer(){
     setShowAnswer(prevState => !prevState)
   }
+
+  function handlePlayAgain(){
+    setShowAnswer(false);
+    setIsTimeToShowQuizBox(false);
+    setIsGameOver( prevState => !prevState)
+
+  }
     
   return(
     <QuizContainer
     isTimeToShowQuizBox = {isTimeToShowQuizBox}
     >
-      {allQuizzes.map(quiz=>(
+      {isApiDataLoaded && allQuizzes.map(quiz=>(
         <QuizBox
           key={quiz.id}
           quizProps = {quiz}
@@ -56,15 +73,18 @@ import { QuizContainer } from "./styles";
           arrIsAllAnswersHolded = {arrIsAllAnswersHolded}
           quizBoxIndex = {allQuizzes.indexOf(quiz, 0)}
           arrScore= {arrScore}
+          setScore= {setScore}
+          handleSetScore ={handleSetScore}
         />
       )
       )}
     <div className="container-check-score">
         <div className="container-button-score">
-          <strong className={showAnswer ? 'score active' : 'score'}>You scored  {arrScore.length}/5 correct answers</strong>
+          <strong className={showAnswer ? 'score active' : 'score'}>You scored  5/5 correct answers</strong>
           {showAnswer ? 
             <button 
             className={`play-again-btn`}
+            onClick={handlePlayAgain}
             >
             Play again
             </button>

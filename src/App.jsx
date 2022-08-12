@@ -22,7 +22,7 @@ function App() {
         <img className={isStarted ? "blue-blob quiz" : "blue-blob"} src={BlueBlob} alt=""/>
         <img className={isStarted ? "yellow-blob quiz" : "yellow-blob"} src={YellowBlob} alt=""/>
         <main>
-        {isStarted ? <Quiz/> : <Start handleStart={handleStart}/>}
+        {isStarted ? <Quiz /> : <Start handleStart={handleStart}/>}
         </main>
 
       </Container>

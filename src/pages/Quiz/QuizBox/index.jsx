@@ -72,6 +72,8 @@ export default function QuizBox(props){
               showAnswer = {props.showAnswer}
               correctAnswer = {props.quizProps.correctAnswer}
               arrScore= {props.arrScore}
+              setScore= {props.setScore}
+              handleSetScore= {props.handleSetScore}
             />
           )
         })}
