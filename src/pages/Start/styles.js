@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StartContainer = styled.div` 
 
@@ -14,6 +14,15 @@ export const StartContainer = styled.div`
   }
 
   .start__button{
+    opacity: 0;
+    ${props =>
+    props.isTimeToShowButton && 
+      css`
+        opacity: 1;
+      `
+    }
+    transition: opacity ease-in-out 1000ms;
+
     border:none;
 
     font-family: 'Inter';

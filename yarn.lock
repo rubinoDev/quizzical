@@ -432,6 +432,13 @@ debug@^4.1.0:
   dependencies:
     ms "2.1.2"
 
+easy-react-animation@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/easy-react-animation/-/easy-react-animation-1.0.5.tgz#edbd73f633076e1afc70dbed6df3f35206ccf76e"
+  integrity sha512-m+1V+rzPczC1gb/Gw7eD9BlZ85bxOUoyrwTtO9LyIeC8rOfk7UKnjdZWxlvh1ij//xiOuoDQ5pNLU5IgjZ6xBw==
+  dependencies:
+    styled-components "^5.3.5"
+
 electron-to-chromium@^1.4.202:
   version "1.4.204"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.204.tgz#aae069adea642c066ea95faf5121262b0842e262"

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { QuizAnswerContainer } from "./styles";
 
-export function QuizAnswer(props){
+function QuizAnswer(props){
 
   let buttonClassNameTest = 'answer-btn' ;
 
@@ -32,4 +32,4 @@ export function QuizAnswer(props){
   )
 }
 
-// {props.isHeld ? `answer-btn held ${props.buttonClassName[props.answerIndex]}` : "answer-btn"} 
+export default memo(QuizAnswer);

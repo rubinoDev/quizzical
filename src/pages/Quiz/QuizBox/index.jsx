@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { QuizAnswer } from "../QuizAnswer";
+import { memo, useEffect, useState } from "react";
+import  QuizAnswer  from "../QuizAnswer";
 import { QuizBoxContainer } from "./styles";
 import nanoId from "nano-id";
 import { QuizAnswerContainer } from "../QuizAnswer/styles";
 
-export function QuizBox(props){
-
+function QuizBox(props){
 
   const [quizAnswer,setQuizAnswer] = useState([])
   const allAnswers = []
@@ -83,3 +82,5 @@ export function QuizBox(props){
 
   )
 }
+
+export default memo(QuizBox);

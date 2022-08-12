@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { QuizBox } from "./QuizBox";
+import { useEffect, useMemo, useRef, useState } from "react";
+import QuizBox  from "./QuizBox";
 import { QuizContainer } from "./styles";
 
  export function Quiz(){
@@ -8,10 +8,17 @@ import { QuizContainer } from "./styles";
   const [isApiDataLoaded, setIsApiDataLoaded] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false)
   const [isAllAnswersHolded, setIsAllAnswersHolded] = useState(false);
-
+  const [isTimeToShowQuizBox, setIsTimeToShowQuizBox] = useState(false)
+  const arrIsAllAnswersHolded = new Array(allQuizzes.length);
   console.log('render')
 
-  const arrIsAllAnswersHolded = new Array(allQuizzes.length);
+  function toggleIsTimeToShowQuizBox(){
+    setIsTimeToShowQuizBox(prevState => !prevState)
+  }
+
+  useEffect(() => {
+    setTimeout(toggleIsTimeToShowQuizBox, 500);
+  },[] )
 
     useEffect(() => {
       (async () => {
@@ -31,7 +38,9 @@ import { QuizContainer } from "./styles";
     }
     
   return(
-    <QuizContainer>
+    <QuizContainer
+    isTimeToShowQuizBox = {isTimeToShowQuizBox}
+    >
       {allQuizzes.map(quiz=>(
         <QuizBox
           key={quiz.id}

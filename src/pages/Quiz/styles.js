@@ -1,6 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const QuizContainer = styled.div`
+  opacity: 0;
+  ${props =>
+    props.isTimeToShowQuizBox &&
+    css`
+      opacity: 1;
+    `}
+  transition: opacity ease-in-out 500ms;
+
   display: flex;
   flex-direction: column;
 
