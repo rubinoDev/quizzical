@@ -1,30 +1,27 @@
 import { memo, useCallback, useEffect, useMemo } from "react";
 
 export default function QuizAnswer(props){
-  // const handleSetScore = useCallback(() => { 
-  //   props.setScore(props.arrScore)
-  // }, [])
+  let buttonClassName = 'answer-btn';
+  const buttonIsHeld = props.isHeld;
+  const buttonNotHeldAnswerRight = props.showAnswer && props.answer === props.correctAnswer;
+  const buttonIsHeldAnswerRight = props.showAnswer && buttonIsHeld && props.answer === props.correctAnswer;
+  const buttonIsHeldAnswerWrong = props.showAnswer && buttonIsHeld && props.answer !== props.correctAnswer;
 
-  let buttonClassName = 'answer-btn' ;
-
-  if(props.isHeld){
+  if(buttonIsHeld){
     buttonClassName = 'answer-btn held'
   }
 
-  if(props.showAnswer && props.answer === props.correctAnswer){
+  if(buttonNotHeldAnswerRight){
     buttonClassName = 'answer-btn held right'
   }
 
-
-  if(props.showAnswer && props.isHeld && props.answer === props.correctAnswer){
+  if(buttonIsHeldAnswerRight){
     buttonClassName = 'answer-btn held right'
-    props.arrScore.push('right answer');
-
+    // props.arrScore += 1;
+    console.log(props.arrScore)
   }
 
-
-
-  if(props.showAnswer && props.isHeld && props.answer !== props.correctAnswer){
+  if(buttonIsHeldAnswerWrong){
     buttonClassName = 'answer-btn held wrong'
   }
 

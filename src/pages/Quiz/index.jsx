@@ -14,17 +14,8 @@ import { QuizContainer } from "./styles";
 
   const arrIsAllAnswersHolded = new Array(allQuizzes.length);
 
-  let arrScore = [];
+  let arrScore = 0;
   console.log('render')
-  console.log(score)
-
-  function addScore(){
-    setScore(prevState => prevState + 1)
-  }
-
-  const handleSetScore = useCallback(() => {
-    return addScore()
-  }, [])
 
   function toggleIsTimeToShowQuizBox(){
     setIsTimeToShowQuizBox(true)
@@ -74,13 +65,12 @@ import { QuizContainer } from "./styles";
           quizBoxIndex = {allQuizzes.indexOf(quiz, 0)}
           arrScore= {arrScore}
           setScore= {setScore}
-          handleSetScore ={handleSetScore}
         />
       )
       )}
     <div className="container-check-score">
         <div className="container-button-score">
-          <strong className={showAnswer ? 'score active' : 'score'}>You scored  5/5 correct answers</strong>
+          <strong className={showAnswer ? 'score active' : 'score'}>You scored  {arrScore}/5 correct answers</strong>
           {showAnswer ? 
             <button 
             className={`play-again-btn`}
