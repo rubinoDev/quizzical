@@ -34,7 +34,6 @@ export default function QuizBox(props){
       prevState.map(answer=>{
         return answer.id === id ? 
         {...answer, isHeld: !answer.isHeld} 
-
         : {...answer, isHeld: false}
       })
     )

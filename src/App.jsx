@@ -10,19 +10,19 @@ import './styles/globals.css'
 
 function App() {
 
-  const [isStarted, setIsStarted] = useState(false)
+  const [isQuizStarted, setIsQuizStarted] = useState(false)
 
   function handleStart(){
-    setIsStarted(prevState=> !prevState)
-}
+    setIsQuizStarted(prevState=> !prevState)
+  }
 
   return (
     <div className="App">
       <Container>
-        <img className={isStarted ? "blue-blob quiz" : "blue-blob"} src={BlueBlob} alt=""/>
-        <img className={isStarted ? "yellow-blob quiz" : "yellow-blob"} src={YellowBlob} alt=""/>
+        <img className={isQuizStarted ? "blue-blob quiz" : "blue-blob"} src={BlueBlob} alt=""/>
+        <img className={isQuizStarted ? "yellow-blob quiz" : "yellow-blob"} src={YellowBlob} alt=""/>
         <main>
-        {isStarted ? <Quiz /> : <Start handleStart={handleStart}/>}
+        {isQuizStarted ? <Quiz /> : <Start handleStart={handleStart}/>}
         </main>
 
       </Container>
