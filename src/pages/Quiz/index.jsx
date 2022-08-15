@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import QuizBox  from "./QuizBox";
 import { QuizContainer } from "./styles";
 
@@ -15,7 +15,12 @@ import { QuizContainer } from "./styles";
   const arrIsAllAnswersHolded = new Array(allQuizzes.length);
 
   let arrScore = 0;
-  console.log('render')
+
+  function handleAddScore(){
+    arrScore++;
+    setScore(arrScore);
+  }
+
 
   function toggleIsTimeToShowQuizBox(){
     setIsTimeToShowQuizBox(true)
@@ -46,7 +51,7 @@ import { QuizContainer } from "./styles";
     setShowAnswer(false);
     setIsTimeToShowQuizBox(false);
     setIsGameOver( prevState => !prevState)
-
+    setScore(0);
   }
     
   return(
@@ -65,12 +70,14 @@ import { QuizContainer } from "./styles";
           quizBoxIndex = {allQuizzes.indexOf(quiz, 0)}
           arrScore= {arrScore}
           setScore= {setScore}
+          handleAddScore= {handleAddScore}
+
         />
       )
       )}
     <div className="container-check-score">
         <div className="container-button-score">
-          <strong className={showAnswer ? 'score active' : 'score'}>You scored  {arrScore}/5 correct answers</strong>
+          <strong className={showAnswer ? 'score active' : 'score'}>You scored  {score}/5 correct answers</strong>
           {showAnswer ? 
             <button 
             className={`play-again-btn`}

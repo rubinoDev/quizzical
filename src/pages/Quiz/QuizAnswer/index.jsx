@@ -1,5 +1,3 @@
-import { memo, useCallback, useEffect, useMemo } from "react";
-
 export default function QuizAnswer(props){
   let buttonClassName = 'answer-btn';
   const buttonIsHeld = props.isHeld;
@@ -17,8 +15,7 @@ export default function QuizAnswer(props){
 
   if(buttonIsHeldAnswerRight){
     buttonClassName = 'answer-btn held right'
-    // props.arrScore += 1;
-    console.log(props.arrScore)
+    props.handleAddScore()
   }
 
   if(buttonIsHeldAnswerWrong){

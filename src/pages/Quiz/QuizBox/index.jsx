@@ -73,6 +73,7 @@ export default function QuizBox(props){
               arrScore= {props.arrScore}
               setScore= {props.setScore}
               handleSetScore= {props.handleSetScore}
+              handleAddScore= {props.handleAddScore}
             />
           )
         })}
