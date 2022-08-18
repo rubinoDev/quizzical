@@ -4,7 +4,7 @@ import { QuizBoxContainer } from "./styles";
 import nanoId from "nano-id";
 import { QuizAnswerContainer } from "../QuizAnswer/styles";
 
-function QuizBoxComponent(props){
+export default function QuizBoxComponent(props){
 
   const [quizAnswer,setQuizAnswer] = useState([])
   const allAnswers = []
@@ -84,5 +84,3 @@ function QuizBoxComponent(props){
 
   )
 }
-
-export default QuizBox = memo(QuizBoxComponent)
