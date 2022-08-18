@@ -3,9 +3,7 @@ import { useMemo } from "react";
 export default function QuizAnswer(props){
   let buttonClassName = 'answer-btn';
 
-  const buttonIsHeld = useMemo(() => (
-    props.isHeld
-  ),[props.isHeld]);
+  const buttonIsHeld = props.isHeld;
 
   const buttonNotHeldAnswerRight = useMemo(() => (
     props.showAnswer && props.answer === props.correctAnswer
