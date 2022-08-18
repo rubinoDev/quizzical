@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { Quiz } from './pages/Quiz'
 import { Start } from './pages/Start'
@@ -12,9 +12,10 @@ function App() {
 
   const [isQuizStarted, setIsQuizStarted] = useState(false)
 
-  function handleStart(){
+  
+  const handleStart = useCallback(() => {
     setIsQuizStarted(prevState=> !prevState)
-  }
+  }, [isQuizStarted])
 
   return (
     <div className="App">

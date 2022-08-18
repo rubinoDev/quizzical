@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import QuizBox  from "./QuizBox";
 import { QuizContainer } from "./styles";
 
@@ -16,10 +16,10 @@ import { QuizContainer } from "./styles";
 
   let arrScore = 0;
 
-  function handleAddScore(){
+  const handleAddScore = useCallback(() => {
     arrScore++;
     setScore(arrScore);
-  }
+  })
 
 
   function toggleIsTimeToShowQuizBox(){
